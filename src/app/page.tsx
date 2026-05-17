@@ -47,16 +47,28 @@ export default function LandingPage() {
         <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
 
           {/* LEFT — image column */}
-          <div className="hidden lg:block lg:w-1/2 shrink-0 relative overflow-hidden">
-            <Image
-              src="/gallery/goldie-grace-3N3A0239.jpg"
-              alt="Goldie Grace"
-              fill
-              sizes="50vw"
-              className="object-cover object-center"
-              priority
-            />
-          </div>
+          <motion.div
+            className="hidden lg:block lg:w-1/2 shrink-0 relative overflow-hidden"
+            initial={{ clipPath: 'inset(0 100% 0 0)' }}
+            animate={{ clipPath: 'inset(0 0% 0 0)' }}
+            transition={{ duration: 1.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.07 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 3.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image
+                src="/gallery/goldie-grace-3N3A0239.jpg"
+                alt="Goldie Grace"
+                fill
+                sizes="50vw"
+                className="object-cover object-center"
+                priority
+              />
+            </motion.div>
+          </motion.div>
 
           {/* RIGHT — content */}
           <motion.div
@@ -70,16 +82,24 @@ export default function LandingPage() {
               className="flex justify-center pt-8 lg:pt-[45%]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, delay: 0.9, ease: 'easeOut' }}
             >
-              <Image
-                src="/goldie-grace-logo-stacked.png"
-                alt="Goldie Grace"
-                width={200}
-                height={80}
-                className="w-[13.8rem] sm:w-[18rem] h-auto"
-                priority
-              />
+              <div className="relative">
+                <motion.div
+                  initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                  animate={{ clipPath: 'inset(0 0% 0 0)' }}
+                  transition={{ duration: 1.9, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Image
+                    src="/goldie-grace-logo-stacked.png"
+                    alt="Goldie Grace"
+                    width={200}
+                    height={80}
+                    className="w-[13.8rem] sm:w-[18rem] h-auto"
+                    priority
+                  />
+                </motion.div>
+              </div>
             </motion.div>
 
             {/* Spacer */}
@@ -88,9 +108,9 @@ export default function LandingPage() {
             {/* Box — bottom */}
             <motion.div
               className="flex flex-col items-center text-center"
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 2.2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="w-full bg-white/70 backdrop-blur-sm border border-white/60 rounded-luxury shadow-luxury-lg px-8 py-10">
                 <p className="font-sans text-caption uppercase tracking-[0.35em] text-charcoal/50 mb-4 italic">Coming Soon</p>
@@ -112,7 +132,12 @@ export default function LandingPage() {
         </div>
 
         {/* MARQUEE STRIP */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden bg-charcoal/90 backdrop-blur-sm py-3 z-20">
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 overflow-hidden bg-charcoal/90 backdrop-blur-sm py-3 z-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 2.2, ease: 'easeOut' }}
+        >
           <motion.div
             className="flex whitespace-nowrap"
             animate={{ x: ['0%', '-50%'] }}
@@ -130,7 +155,7 @@ export default function LandingPage() {
               </span>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
 
       </section>
 
