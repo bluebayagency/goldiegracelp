@@ -26,21 +26,23 @@ export default function LandingPage() {
         {/* Glow gradient background */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 75% 50%, rgba(217,183,109,0.18) 0%, rgba(239,230,219,0.35) 35%, transparent 65%), radial-gradient(ellipse at 90% 15%, rgba(255,248,242,0.7) 0%, transparent 50%), radial-gradient(ellipse at 60% 90%, rgba(195,179,173,0.25) 0%, transparent 55%)' }} />
 
-        {/* Full-bleed background image */}
+        {/* Full-bleed background image — mobile only */}
         <motion.div
-          className="absolute inset-0 md:right-[38%] lg:hidden"
+          className="absolute inset-0 lg:hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
-            src="/gallery/goldie-grace-hero-left.png"
-            alt="Goldie Grace"
+            src="/gallery/goldie-grace-3N3A0239.jpg"
+            alt=""
             fill
             sizes="100vw"
-            className="object-cover object-[center_15%]"
+            className="object-cover object-center"
             priority
           />
+          {/* Luxury overlay — lets stone texture breathe at top, protects content below */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(246,243,238,0.38) 0%, rgba(236,229,218,0.62) 45%, rgba(230,221,208,0.82) 100%)' }} />
         </motion.div>
 
         {/* Two-column layout overlay */}
@@ -72,7 +74,7 @@ export default function LandingPage() {
 
           {/* RIGHT — content */}
           <motion.div
-            className="w-full lg:w-1/2 flex flex-col shrink-0 px-10 sm:px-14 xl:px-16 pb-40 sm:pb-52 min-h-screen"
+            className="w-full lg:w-1/2 flex flex-col shrink-0 px-10 sm:px-14 xl:px-16 pb-8 lg:pb-40 min-h-screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -112,7 +114,7 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 2.2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="w-full bg-white/70 backdrop-blur-sm border border-white/60 rounded-luxury shadow-luxury-lg px-8 py-10">
+              <div className="w-[calc(100%+5rem)] -mx-10 sm:w-full sm:mx-0 px-10 sm:px-8 py-10">
                 <p className="font-sans text-caption uppercase tracking-[0.35em] text-charcoal/50 mb-4 italic">Coming Soon</p>
                 <h1 className="font-elegant text-5xl sm:text-6xl xl:text-7xl text-charcoal leading-[1.08] mb-8">
                   A better way to learn makeup.
