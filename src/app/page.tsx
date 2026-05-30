@@ -9,7 +9,7 @@ import { ImageReveal } from '@/components/ImageReveal'
 import { MailerLiteForm } from '@/components/MailerLiteForm'
 
 export default function LandingPage() {
-  const insiderRef = useRef(null)
+  const insiderRef = useRef<HTMLElement>(null)
   const { scrollYProgress: insiderProgress } = useScroll({
     target: insiderRef,
     offset: ['start end', 'end start'],
@@ -22,7 +22,14 @@ export default function LandingPage() {
       {/* ALERT BANNER */}
       <div className="w-full bg-charcoal py-2.5 px-4 text-center">
         <p className="font-sans text-caption uppercase tracking-[0.25em] text-white/70">
-          Launching soon. <span className="text-gold">Join the waitlist</span> and be first to know.
+          Launching soon.{' '}
+          <button
+            onClick={() => insiderRef.current?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-gold underline underline-offset-2 decoration-gold/50 hover:decoration-gold transition-all duration-200"
+          >
+            Join the waitlist
+          </button>
+          {' '}and be first to know.
         </p>
       </div>
 
@@ -122,7 +129,9 @@ export default function LandingPage() {
                 <h1 className="font-elegant text-5xl sm:text-6xl xl:text-7xl text-charcoal leading-[1.08] mb-8">
                   A better way to learn makeup.
                 </h1>
+                <p className="font-sans text-caption uppercase tracking-[0.35em] text-charcoal/50 mb-4">Join the waitlist</p>
                 <MailerLiteForm />
+                <p className="font-sans text-[11px] text-charcoal/40 mt-3">By subscribing, you agree to our Terms and Privacy Policy.</p>
               </div>
             </motion.div>
 
@@ -324,7 +333,9 @@ export default function LandingPage() {
           />
 
           <AnimateIn delay={0.4}>
+            <p className="font-sans text-caption uppercase tracking-[0.35em] text-white/50 mb-4">Join the waitlist</p>
             <MailerLiteForm />
+            <p className="font-sans text-[11px] text-white/30 mt-3">By subscribing, you agree to our Terms and Privacy Policy.</p>
           </AnimateIn>
 
           <AnimateIn delay={0.55}>
