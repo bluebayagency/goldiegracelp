@@ -55,7 +55,7 @@ export default function LandingPage() {
             priority
           />
           {/* Luxury overlay — lets stone texture breathe at top, protects content below */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(246,243,238,0.38) 0%, rgba(236,229,218,0.62) 45%, rgba(230,221,208,0.82) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(246,243,238,0.0) 0%, rgba(246,243,238,0.08) 35%, rgba(236,229,218,0.65) 58%, rgba(230,221,208,0.96) 100%)' }} />
         </motion.div>
 
         {/* Two-column layout overlay */}
@@ -110,7 +110,7 @@ export default function LandingPage() {
                     alt="Goldie Grace"
                     width={200}
                     height={80}
-                    className="w-[13.8rem] sm:w-[18rem] h-auto"
+                    className="w-[21.6rem] sm:w-[18rem] h-auto"
                     priority
                   />
                 </motion.div>
@@ -361,7 +361,7 @@ export default function LandingPage() {
             alt="Goldie Grace"
             width={200}
             height={80}
-            className="h-16 w-auto mx-auto opacity-50"
+            className="h-16 w-auto mx-auto"
           />
 
           {/* Mid hairline */}

@@ -387,6 +387,24 @@
   .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0 !important; padding-bottom: 10px; }
   .ml-form-formContent.horozintalForm .ml-button-horizontal { display: none !important; }
   .ml-mobileButton-horizontal { display: inline-block !important; margin-bottom: 20px; width: 100%; }
+  .ml-mobileButton-horizontal button {
+    background-color: #d9b76d !important;
+    border-color: #d9b76d !important;
+    color: #ffffff !important;
+    width: 100%;
+    padding: 14px 20px !important;
+    font-size: 11px !important;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .ml-mobileButton-horizontal button:hover {
+    background-color: #b89958 !important;
+    border-color: #b89958 !important;
+  }
 }
 
 /* ── Scrollbar ─────────────────────────────────────────────────────── */
