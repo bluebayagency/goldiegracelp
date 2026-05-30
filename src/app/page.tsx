@@ -1,15 +1,21 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { AnimateIn } from '@/components/AnimateIn'
 import { TextReveal } from '@/components/TextReveal'
 import { ImageReveal } from '@/components/ImageReveal'
-import { EmailSignupForm } from '@/components/EmailSignupForm'
-
-
+import { MailerLiteForm } from '@/components/MailerLiteForm'
 
 export default function LandingPage() {
+  const insiderRef = useRef(null)
+  const { scrollYProgress: insiderProgress } = useScroll({
+    target: insiderRef,
+    offset: ['start end', 'end start'],
+  })
+  const parallaxY = useTransform(insiderProgress, [0, 1], ['-18%', '18%'])
+
   return (
     <main className="overflow-x-hidden">
 
@@ -74,14 +80,14 @@ export default function LandingPage() {
 
           {/* RIGHT — content */}
           <motion.div
-            className="w-full lg:w-1/2 flex flex-col shrink-0 px-10 sm:px-14 xl:px-16 pb-8 lg:pb-40 min-h-screen"
+            className="w-full lg:w-1/2 flex flex-col justify-center shrink-0 px-10 sm:px-14 xl:px-16 py-16 min-h-screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Logo — 30% from top */}
+            {/* Logo */}
             <motion.div
-              className="flex justify-center pt-8 lg:pt-[45%]"
+              className="flex justify-center mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.9, ease: 'easeOut' }}
@@ -104,10 +110,7 @@ export default function LandingPage() {
               </div>
             </motion.div>
 
-            {/* Spacer */}
-            <div className="flex-1" />
-
-            {/* Box — bottom */}
+            {/* Box */}
             <motion.div
               className="flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 18 }}
@@ -119,13 +122,7 @@ export default function LandingPage() {
                 <h1 className="font-elegant text-5xl sm:text-6xl xl:text-7xl text-charcoal leading-[1.08] mb-8">
                   A better way to learn makeup.
                 </h1>
-                <EmailSignupForm
-                  showName
-                  variant="light"
-                  buttonText="Alert Me at Launch"
-                  successMessage="You're on the list."
-                  successSubtext="One email. The moment we go live, you will know first."
-                />
+                <MailerLiteForm />
               </div>
             </motion.div>
 
@@ -163,6 +160,16 @@ export default function LandingPage() {
 
       {/* FEATURES */}
       <section className="relative py-20 lg:py-28 bg-cream overflow-visible">
+        {/* Icon overlaying the section boundary, bleeding right */}
+        <div className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/3 z-10 pointer-events-none">
+          <Image
+            src="/goldie-grace-icon-transparent.png"
+            alt="Goldie Grace"
+            width={496}
+            height={496}
+            className="h-[396px] w-auto opacity-20"
+          />
+        </div>
         <div className="px-5 sm:px-8 max-w-5xl mx-auto">
 
           <AnimateIn>
@@ -278,76 +285,51 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Icon overlaying the section boundary, bleeding right */}
-        <div className="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/3 z-10 pointer-events-none">
-          <Image
-            src="/goldie-grace-icon-transparent.png"
-            alt="Goldie Grace"
-            width={496}
-            height={496}
-            className="h-[396px] w-auto opacity-20"
-          />
-        </div>
 
       </section>
 
       {/* INSIDER */}
-      <section className="relative py-24 lg:py-36 bg-charcoal overflow-hidden">
+      <section ref={insiderRef} className="relative min-h-screen flex items-center bg-charcoal overflow-hidden">
 
+        {/* Parallax background layer */}
         <motion.div
-          className="absolute top-16 right-16 w-48 h-48 rounded-full bg-gold/5 blur-3xl"
-          animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-16 left-10 w-64 h-64 rounded-full bg-gold/5 blur-3xl"
-          animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
+          className="absolute inset-[-20%] flex items-center justify-center pointer-events-none"
+          style={{ y: parallaxY }}
+        >
+          <Image
+            src="/goldie-grace-icon-transparent.png"
+            alt=""
+            width={700}
+            height={700}
+            className="w-[520px] lg:w-[700px] h-auto opacity-[0.04]"
+          />
+        </motion.div>
+
+        {/* Subtle gold glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 60%, rgba(217,183,109,0.07) 0%, transparent 65%)' }} />
+
         <div className="relative z-10 px-5 sm:px-8 max-w-lg mx-auto text-center">
 
           <AnimateIn>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <motion.div
-                className="h-px bg-gold/30"
-                initial={{ width: 0 }}
-                whileInView={{ width: 40 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-              <p className="font-sans text-caption uppercase tracking-[0.3em] text-gold whitespace-nowrap">
-                Coming Soon
-              </p>
-              <motion.div
-                className="h-px bg-gold/30"
-                initial={{ width: 0 }}
-                whileInView={{ width: 40 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-            </div>
+            <p className="font-sans text-caption uppercase tracking-[0.3em] text-gold mb-8">
+              Coming Soon
+            </p>
           </AnimateIn>
 
           <TextReveal
-            text="Be First To Know."
+            text="Be first to know."
             tag="h2"
             className="font-elegant text-5xl sm:text-6xl text-white leading-none mb-5"
             delay={0.1}
           />
 
           <AnimateIn delay={0.4}>
-            <EmailSignupForm
-              showName
-              variant="dark"
-              buttonText="Notify Me at Launch"
-              successMessage="You're on the list."
-              successSubtext="We will reach out the moment we go live."
-            />
+            <MailerLiteForm />
           </AnimateIn>
 
           <AnimateIn delay={0.55}>
             <p className="font-sans text-caption text-white/25 uppercase tracking-widest mt-8">
-              No spam. One email. When we are live.
+              No spam. Unsubscribe anytime.
             </p>
           </AnimateIn>
 
@@ -355,17 +337,46 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 bg-cream border-t border-taupe/30 text-center">
-        <Image
-          src="/goldie-grace-logo-stacked.png"
-          alt="Goldie Grace"
-          width={200}
-          height={80}
-          className="h-14 w-auto mx-auto mb-4 opacity-45"
-        />
-        <p className="font-sans text-caption text-charcoal/35 uppercase tracking-widest">
-          © {new Date().getFullYear()} Goldie Grace. All rights reserved.
-        </p>
+      <footer className="bg-cream text-center">
+
+        {/* Top hairline */}
+        <div className="w-full h-px bg-taupe/30" />
+
+        <div className="px-6 pt-16 pb-10">
+
+          {/* Logo */}
+          <Image
+            src="/goldie-grace-logo-stacked.png"
+            alt="Goldie Grace"
+            width={200}
+            height={80}
+            className="h-16 w-auto mx-auto opacity-50"
+          />
+
+          {/* Mid hairline */}
+          <div className="w-12 h-px bg-taupe/50 mx-auto mt-10 mb-10" />
+
+          {/* Nav links */}
+          <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3 mb-10">
+            {['About', 'Contact', 'Privacy Policy'].map((link) => (
+              <span
+                key={link}
+                className="font-sans text-caption uppercase tracking-[0.25em] text-charcoal/40 hover:text-charcoal/70 transition-colors duration-200 cursor-pointer"
+              >
+                {link}
+              </span>
+            ))}
+          </nav>
+
+          {/* Bottom hairline */}
+          <div className="w-full h-px bg-taupe/20 mb-8" />
+
+          {/* Copyright */}
+          <p className="font-sans text-caption text-charcoal/25 uppercase tracking-[0.2em]">
+            © {new Date().getFullYear()} Goldie Grace. All rights reserved.
+          </p>
+
+        </div>
       </footer>
 
     </main>

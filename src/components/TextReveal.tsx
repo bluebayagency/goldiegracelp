@@ -23,7 +23,7 @@ export function TextReveal({
 
   return (
     <div ref={ref} className={className} aria-label={text}>
-      <Tag className="font-[inherit] text-[inherit] leading-[inherit] tracking-[inherit] uppercase">
+      <Tag className="font-[inherit] text-[inherit] leading-[inherit] tracking-[inherit]">
         {words.map((word, i) => (
           <span key={i} className="inline-block overflow-hidden mr-[0.25em] last:mr-0">
             <motion.span
