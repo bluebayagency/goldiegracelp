@@ -369,7 +369,7 @@ export default function LandingPage() {
 
           {/* Nav links */}
           <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3 mb-10">
-            {['About', 'Contact', 'Privacy Policy'].map((link) => (
+            {['Terms and Conditions', 'Privacy Policy'].map((link) => (
               <span
                 key={link}
                 className="font-sans text-caption uppercase tracking-[0.25em] text-charcoal/40 hover:text-charcoal/70 transition-colors duration-200 cursor-pointer"
