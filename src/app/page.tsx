@@ -387,6 +387,18 @@ export default function LandingPage() {
             © {new Date().getFullYear()} Goldie Grace. All rights reserved.
           </p>
 
+          <p className="font-sans text-[11px] text-charcoal/20 mt-4">
+            Site made with love by{' '}
+            <a
+              href="https://www.bluebayagency.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-charcoal/40 transition-colors duration-200"
+            >
+              Bluebay Agency, LLC
+            </a>
+          </p>
+
         </div>
       </footer>
 
