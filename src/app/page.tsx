@@ -39,31 +39,12 @@ export default function LandingPage() {
         {/* Glow gradient background */}
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 75% 50%, rgba(217,183,109,0.18) 0%, rgba(239,230,219,0.35) 35%, transparent 65%), radial-gradient(ellipse at 90% 15%, rgba(255,248,242,0.7) 0%, transparent 50%), radial-gradient(ellipse at 60% 90%, rgba(195,179,173,0.25) 0%, transparent 55%)' }} />
 
-        {/* Full-bleed background image — mobile only */}
-        <motion.div
-          className="absolute inset-0 lg:hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Image
-            src="/gallery/goldie-grace-3N3A0239.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            priority
-          />
-          {/* Luxury overlay — lets stone texture breathe at top, protects content below */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(246,243,238,0.0) 0%, rgba(246,243,238,0.08) 35%, rgba(236,229,218,0.65) 58%, rgba(230,221,208,0.96) 100%)' }} />
-        </motion.div>
-
-        {/* Two-column layout overlay */}
+        {/* Two-column layout */}
         <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
 
           {/* LEFT — image column */}
           <motion.div
-            className="hidden lg:block lg:w-1/2 shrink-0 relative overflow-hidden"
+            className="block w-full flex-1 min-h-[40vw] lg:flex-none lg:w-1/2 shrink-0 relative overflow-hidden order-2 lg:order-1"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
             animate={{ clipPath: 'inset(0 0% 0 0)' }}
             transition={{ duration: 1.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -87,7 +68,7 @@ export default function LandingPage() {
 
           {/* RIGHT — content */}
           <motion.div
-            className="w-full lg:w-1/2 flex flex-col justify-center shrink-0 px-10 sm:px-14 xl:px-16 py-16 min-h-screen"
+            className="w-full lg:w-1/2 flex flex-col justify-center shrink-0 px-10 sm:px-14 xl:px-16 py-16 order-1 lg:order-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
